@@ -46,7 +46,7 @@ class _SavedListState extends State<SavedList> {
         textScaleFactor: 1.5,
       ),
       onTap: () {
-        bloc.addToOrRemoveFromSavedList(pair);
+        bloc.addToOrRemoveFromSavedList(pair,null);
       },
     );
   }

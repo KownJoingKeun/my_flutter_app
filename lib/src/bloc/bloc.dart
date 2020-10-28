@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:english_words/english_words.dart';
+import '../store/counter.dart';
 
 class Bloc{
   Set<WordPair> saved = Set<WordPair>();
@@ -10,11 +11,13 @@ class Bloc{
 
   get addCurrentSaved => _savedController.sink.add(saved);
 
-  addToOrRemoveFromSavedList(WordPair item){
+  addToOrRemoveFromSavedList(WordPair item, Counter counter){
     if(saved.contains(item)){
       saved.remove(item);
+      counter.decrement();
     }else{
       saved.add(item);
+      counter.increment();
     }
 
     _savedController.sink.add(saved);

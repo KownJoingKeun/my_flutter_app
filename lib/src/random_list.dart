@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
 import 'package:my_flutter_app/src/SavedList.dart';
 import 'bloc/bloc.dart';
+import 'store/counter.dart';
+
 
 class RandomList extends StatefulWidget {
   @override
@@ -10,6 +12,8 @@ class RandomList extends StatefulWidget {
 
 class _RandomListState extends State<RandomList> {
   final List<WordPair> _sugestions = <WordPair>[];
+  final counter = Counter();
+
   @override
   Widget build(BuildContext context) {
 
@@ -61,7 +65,8 @@ class _RandomListState extends State<RandomList> {
         color: Colors.pink,
       ),
       onTap: () {
-        bloc.addToOrRemoveFromSavedList(pair);
+        bloc.addToOrRemoveFromSavedList(pair , counter);
+        print(counter.value);
       },
     );
   }
